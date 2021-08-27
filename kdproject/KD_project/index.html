@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html ng-App="KRRclass" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title> NBA All-Stars Statistics </title>
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/css-custom.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body ng-controller="MainCtrl" data-ng-init="project()" >
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-acl mb-5">
+        <a class="navbar-brand" href="#">
+            <img style="font-family:verdana"src="https://1000logos.net/wp-content/uploads/2017/04/NBA-Logo.png" height="80" alt="">
+            NBA Allstars Side-by-side
+        </a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mb-5">
+
+        <div class="container mt-5 mb-5">
+            <div class="row">
+                <div class="col-8">
+                    <h2> NBA statistics for All-Stars
+                    </h2>
+                    <div class="intro">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mt-5 mb-5">
+            <div class="row">
+                <div class="col-8 align-self-center">
+                    <div class="dropdown">
+                        <button class="dropbtn">Select an Allstar</button>
+                        <div class="dropdown-content">
+                            <a class="something" ng-click="Player('Larry_Bird')">Larry Bird</a>
+                            <a class="something" ng-click="Player('Magic_Johnson')">Magic Johnson</a>
+                            <a class="something" ng-click="Player('Bill_Laimbeer')">Bill Laimbeer</a>
+                            <a class="something" ng-click="Player('Penny_Hardaway')">Penny Hardaway</a>
+                            <a class="something" ng-click="Player('Tim_Hardaway')">Tim Hardaway</a>
+                            <a class="something" ng-click="Player('Reggie_Miller')">Reggie Miller</a>
+                            <a class="something" ng-click="Player('Kareem_Abdul-Jabbar')">Kareem Abdul-Jakbar</a>
+                            <a class="something" ng-click="Player('Steve_Nash')">Steve Nash</a>
+                            <a class="something" ng-click="Player('Johnny_Kerr')">Johnny Kerr</a>
+                            <a class="something" ng-click="Player('Terrell_Brandon')">Terrell Brandon</a>
+                            <a class="something" ng-click="Player('Baron_Davis')">Baron Davis</a>
+                            <a class="something" ng-click="Player('Jerry_West')">Jerry West</a>
+                            <a class="something" ng-click="Player('Charles_Barkley')">Charles Barkley</a>
+                            <a class="something" ng-click="Player('Tim_Duncan')">Tim Duncan</a>
+                            <a class="something" ng-click="Player('Pete_Maravich')">Pete Maravich</a>
+                            <a class="something" ng-click="Player('Scottie_Pippen')">Scottie Pippen</a>
+                            <a class="something" ng-click="Player('Nate_Archibald')">Nate Archibald</a>
+                            <a class="something" ng-click="Player('Don_Barksdale')">Don Barksdale</a>
+                            <a class="something" ng-click="Player('Kevin_McHale_')">Kevin McHale</a>
+                            <a class="something" ng-click="Player('Dennis_Rodman')">Dennis Rodman</a>
+                            <a class="something" ng-click="Player('Calvin_Murphy')">Calvin Murphy</a>
+                            <a class="something" ng-click="Player('Wilt_Chamberlains')">Wilt Chamberlains</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Select an Allstar</button>
+                        <div class="dropdown-content">
+                            <a class="something" ng-click="Player2('Larry_Bird')">Larry Bird</a>
+                            <a class="something" ng-click="Player2('Magic_Johnson')">Magic Johnson</a>
+                            <a class="something" ng-click="Player2('Bill_Laimbeer')">Bill Laimbeer</a>
+                            <a class="something" ng-click="Player2('Penny_Hardaway')">Penny Hardaway</a>
+                            <a class="something" ng-click="Player2('Tim_Hardaway')">Tim Hardaway</a>
+                            <a class="something" ng-click="Player2('Reggie_Miller')">Reggie Miller</a>
+                            <a class="something" ng-click="Player2('Kareem_Abdul-Jabbar')">Kareem Abdul-Jakbar</a>
+                            <a class="something" ng-click="Player2('Steve_Nash')">Steve Nash</a>
+                            <a class="something" ng-click="Player2('Johnny_Kerr')">Johnny Kerr</a>
+                            <a class="something" ng-click="Player2('Terrell_Brandon')">Terrell Brandon</a>
+                            <a class="something" ng-click="Player2('Baron_Davis')">Baron Davis</a>
+                            <a class="something" ng-click="Player2('Jerry_West')">Jerry West</a>
+                            <a class="something" ng-click="Player2('Charles_Barkley')">Charles Barkley</a>
+                            <a class="something" ng-click="Player2('Tim_Duncan')">Tim Duncan</a>
+                            <a class="something" ng-click="Player2('Pete_Maravich ')">Pete Maravich</a>
+                            <a class="something" ng-click="Player2('Scottie_Pippen')">Scottie Pippen</a>
+                            <a class="something" ng-click="Player2('Nate_Archibald')">Nate Archibald</a>
+                            <a class="something" ng-click="Player2('Don_Barksdale')">Don Barksdale</a>
+                            <a class="something" ng-click="Player2('Kevin_McHale_')">Kevin McHale</a>
+                            <a class="something" ng-click="Player2('Dennis_Rodman')">Dennis Rodman</a>
+                            <a class="something" ng-click="Player2('Calvin_Murphy')">Calvin Murphy</a>
+                            <a class="something" ng-click="Player2('Julius_Erving')">Julius Erving</a>
+                            <a class="something" ng-click="Player2('Wilt_Chamberlains')">Wilt Chamberlains</a>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-outline-secondary" ng-click="startQuery()" type="button">Display</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mt-5 mb-5">
+            <div class="row">
+
+            </div>
+        </div>
+    </div>
+
+
+<!--    charts-->
+    <div class="container mt-5 mb-5">
+        <div class="col-8">
+            <h2><font color="#000000">{{myDisplayMessage}}</font></h2>
+            <canvas id = "chart1" class="chart chart-bar" chart-data="myChart" chart-labels="myDynamicLabels" chart-series = "something"> </canvas>
+        </div>
+    </div>
+
+
+<!--    first table-->
+    <section class="table">
+        <h2>Player Stats</h2>
+        <table id="table">
+            <tr>
+                <th>Name</th>
+                <td id="player"></td>
+                <td id="player2"></td>
+            </tr>
+            <tr>
+                <th>Points</th>
+                <td id="points"></td>
+                <td id="points2"></td>
+            </tr>
+            <tr>
+                <th>Assists</th>
+                <td id="assists"></td>
+                <td id="assists2"></td>
+            </tr>
+            <tr>
+                <th>Rebounds</th>
+                <td id="rebounds"></td>
+                <td id="rebounds2"></td>
+            </tr>
+            <tr>
+                <th>Height</th>
+                <td id="height"></td>
+                <td id="height2"></td>
+            </tr>
+            <tr>
+                <th>Weight</th>
+                <td id="weight"></td>
+                <td id="weight2"></td>
+            </tr>
+            <tr>
+                <th>Birthday</th>
+                <td id="birthday"></td>
+                <td id="birthday2"></td>
+            </tr>
+            <tr>
+                <th>College</th>
+                <td id="college"></td>
+                <td id="college2"></td>
+            </tr>
+            <tr>
+                <th>Total years played</th>
+                <td id="playedYears"></td>
+                <td id="playedYears2"></td>
+            </tr>
+            <tr>
+                <th>Drafted in</th>
+                <td id="draftedIn"></td>
+                <td id="draftedIn2"></td>
+            </tr>
+            <tr>
+                <th>Draft Pick</th>
+                <td id="draftPick"></td>
+                <td id="draftPick2"></td>
+            </tr>
+<!--            <tr>-->
+<!--                <th>Played With</th>-->
+<!--                <td id="playedWith"></td>-->
+<!--                <td id="playedWith2"></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <th>Championship</th>-->
+<!--                <td id="championship"></td>-->
+<!--                <td id="championship2"></td>-->
+<!--            </tr>-->
+        </table>
+    </section>
+
+
+<!-- JavaScript libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="js/Chart.min.js"></script>
+<script src="js/angular-chart.min.js"></script>
+<script src="main.js"></script>
+
+
+</body>
+</html>
