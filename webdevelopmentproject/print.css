@@ -1,0 +1,145 @@
+body {
+    background-color:#E6E6FA;
+}
+
+.full-width {
+    width:100%;
+    height:auto;
+}
+
+h1 {
+    font-family:impact;
+}
+
+#image-banner div {
+    display:none;
+    width:inherit;
+    height:30vh;
+    background-image:url("https://websend-content.imgix.net/mkC2emkkPqwCrQrfMQtnnieS?auto=compress%2Cformat&w=800&s=d08203da5175fb55d52398af4217135c");
+    background-repeat:repeat;
+    background-position:center top;
+    background-attachment:fixed;
+}
+
+#image-banner p {
+    margin-right:50vw;
+}
+
+#texts h1 {
+    text-align:center;
+    text-decoration:underline;
+}
+
+#texts p {
+    text-indent:300%;
+}
+
+.smartphone-prices table, .smartphone-prices td {
+    border-style:solid;
+    border-color:gray;
+    border-spacing:2px;
+    border-width:3px;
+}
+
+section.smartphone-prices table {
+    page-break-after:always;
+}
+
+.smartphone-prices {
+    margin-top:23em;
+    caption-side:bottom;
+}
+
+#smartphone-details table ,#smartphone-details td {
+    border: 4px solid gray;
+}
+
+#smartphone-details {
+    page-break-before:always;
+    clear:both;
+}
+
+#staff p {
+    page-break-before:always;
+}
+
+nav {
+    padding-left:5px;
+}
+
+.title-appearance {
+    font-size:xx-large;
+    font-family:arial;
+}
+
+nav > p {
+    font-size:x-large;
+    font-weight:bold;
+    font-family:arial;
+    font-variant:small-caps;
+    font-style:inherit;
+}
+
+nav > a:hover {
+    color:purple;
+    font-size:large;
+}
+
+section {
+    margin-bottom:50px;
+    orphans:3;
+    widows:5;
+}
+
+a:link {
+    color:blue;
+}
+
+a:active, a:visited {
+    color:black;
+}
+
+input:focus {
+    background-color:yellow;
+}
+
+ul.square-list li {
+    list-style: square inside;
+}
+
+ul.image-list {
+    list-style-type:square;
+    /* Could not find an image online that was small enough to fit into a small icon. list-style-image:url("https://www.
+    pinclipart.com/picdir/middle/56-565949_related-wallpapers-address-icon-vector-clipart.png"); */
+}
+
+ol li {
+    list-style-type:katakana;
+    list-style-position:outside;
+}
+
+#staff {
+    font: italic bold 0.8em sans-serif;
+}
+
+.float-left {
+    float:left;
+    clear:left;
+}
+
+#float-padding {
+    display:none;
+}
+
+#float-margin {
+    margin-top:23em;
+}
+
+fig > img {
+    width:auto;
+    height:100%;
+}
+
+#removable {
+    display:none;
+}
