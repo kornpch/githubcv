@@ -1,0 +1,5 @@
+The following is a Multi-Agent System asssignment in which Kornpol Chung was tasked with programming Java as well as in Pearl to develop a BW4T (Block Worlds For Teams) agent.
+BW4T was developed by TUDelft as an extension to GOAL for embodied agents in environmentsm, the assignment in question is meant to represent a search and rescue bot
+which has been tasked with collecting blocks (representing people) of different colors. The agent is capable of traversing the entire environment and collecting and
+placing the blocks in a pre-determined color-order. 
+
