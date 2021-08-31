@@ -8,4 +8,13 @@ The assignment showcases the ability to utilize modules for a disembodied agent 
 To run the assignment; 
 
 
-1. Start a new Project in Eclipse (or a compatible IDE) in the 
+1. Start a new Project in Eclipse (or a compatible IDE) 
+
+2. select the Goal perspective (Window → Perspec- tive → Open Perspective → Other → GOAL).
+
+3. Run the bw4t-server-3.9.3.jar file in which a GUI will pop-up 
+
+4. Run the bw4t.mas2g file as GOAL 
+
+
+The bot will begin completing the aforementioned task.
