@@ -1,0 +1,32 @@
+use robot as knowledge.
+
+module robotEvent {
+	
+	forall percept(state(NewState)), bel(state(State), State \= NewState)
+		do delete(state(State)) + insert(state(NewState)).
+		
+
+	forall percept(at(NewPlaceID)), bel(at(PlaceID), PlaceID \= NewPlaceID) 
+		do delete(at(PlaceID)) + insert(at(NewPlaceID)).
+	
+
+	forall percept(sequenceIndex(NewIndex)), bel(sequenceIndex(Index), Index \= NewIndex) %sequenceIndex onchange
+		do delete(sequenceIndex(Index)) + insert(sequenceIndex(NewIndex)).
+	
+	% Send always: checks if agents is holding a block and upda
+	if percept(holding(BlockID)), not(bel(holding(BlockID))) then insert( holding(BlockID) ).
+	if not(percept(holding(BlockID))), bel(holding(BlockID)) then delete(holding(BlockID)).
+	
+	% Send always: checks if agents is near a block and updates if so
+	forall percept(atBlock(BlockID)), not(bel(atBlock(BlockID))) do insert(atBlock(BlockID)).
+	forall not(percept(atBlock(BlockID))), bel(atBlock(BlockID)) do delete(atBlock(BlockID)).	
+	
+	% Record when entering or leaving a room.
+	if bel(in(Place)), not(percept(in(Place))) then delete(in(Place)).
+	if percept(in(Place)), not(bel(in(Place))) then insert(in(Place)).
+	
+	% Where to find a color block; in which room and which color agents beliefs
+	forall percept(color(BlockID,ColorID), in(RoomID)), not(bel(color(BlockID,ColorID), block(BlockID,ColorID,RoomID)))
+		 do insert(color(BlockID,ColorID)) + insert(block(BlockID,ColorID,RoomID)).
+		 
+}

@@ -1,0 +1,28 @@
+use robot as knowledge.
+
+%  Modify the goTo action specification.
+% The goTo action makes the agent move to a place (location) in the BW4T environment.
+define goTo(Location) with
+	% Checks if agents is not moving/traveling
+	pre { not(state(traveling)) }
+	post { true }
+
+%  add a specification for the goToBlock(Block) action.
+%  add an extra condition to the precondition of the goToBlock action.
+define goToBlock(Block) with
+	% Agents must not be moving/traveling nor holding something, must also be in 
+	% same room as the block
+	pre { not(state(traveling)), not(holding(_)), block(Block,_,PlaceID),in(PlaceID) } 
+	post { true } 
+
+%  add a specification for the pickUp action.
+define pickUp(Block) with
+	% Agent must be at the block it needs (or the color agent beliefs)
+	pre {atBlock(Block)} 
+	post { true } 
+
+%  add a specification for the putDown action.
+define putDown  with 
+	% Agent must be holding at least one block
+	pre { holding(_), in('DropZone') } 
+	post { true } 

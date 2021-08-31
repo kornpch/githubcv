@@ -1,0 +1,43 @@
+use robot as knowledge.
+use robotActions.
+exit=nogoals.
+
+%  Add the nextColor(ColorId) macro here.
+define nextColor(ColorID) as 
+	goal(sequence(GoalSeq)), bel(sequence(Seq),append(Seq,CurrSeq,GoalSeq),nth0(0,CurrSeq,ColorID)).
+
+module robotMain {
+	%  Add a rule to put down the block.
+	%  Add update logic for the sequence predicate.
+	% checks for holding block to be same ColorID as first index in sequence
+	% creates new sequence with next block ColorID by putting down the holding block
+	% then remove old sequence, and insert new sequence with the next objective	
+	if bel(holding(BlockID), color(BlockID,ColorID), sequence(Seq), append(Seq,[ColorID],NewSeq))
+		then putDown + delete(holding(BlockID)) + delete(sequence(Seq)) + insert(sequence(NewSeq)).
+		
+	% Add a rule to go to the dropzone.
+	% Checks if agents holds something to go to DropZone
+	if bel(holding(_))
+		then goTo('DropZone').  
+	
+	% Add a rule to pick up a block.
+	% When agents is near a block with the color agent beliefs, then agents can
+	% pick up and delete the saved position of the block in belief
+	if nextColor(ColorID), bel(block(BlockID,ColorID,PlaceID), atBlock(BlockID))
+		then pickUp(BlockID) + delete(block(BlockID,ColorID,PlaceID)).	
+	
+	%  Add a rule to go to a block.
+	% Agent can go to block when block of color agent beliefs is in the same room
+	% as agent
+	if nextColor(ColorID), bel(block(BlockID,ColorID,_))
+		then goToBlock(BlockID).
+	
+	% Add a rule to go to a room where a block of the right colour can be found.
+	% Agent will go to room, where block of color agent beliefs in 
+	% when agent is not holding something
+	if nextColor(ColorID),bel(block(_,ColorID,PlaceID)), not(bel(holding(_)))
+		then goTo(PlaceID). 
+
+	if goal(in(Place))
+		then goTo(Place).
+}

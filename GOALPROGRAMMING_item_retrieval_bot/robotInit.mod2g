@@ -1,0 +1,36 @@
+use robot as knowledge.
+
+module robotInit {
+	% Store map information, i.e., navigation points in the agent's belief base.
+	% Send once
+	forall percept(zone(ID, Name, _, _, Neighbours))  
+		do insert(zone(ID, Name, Neighbours)).
+		
+	%  Add percept rules for sent once and send on change percepts.
+	% Send once: remembers all the places on the map that exist
+	forall percept(place(PlaceID)) %place
+		do insert(place(PlaceID)).
+	
+	% Send on change: when agent is in a new place, 
+	% set the place as the current place	
+	if percept(at(PlaceID)) then insert (at(PlaceID)). 
+	
+	% Send on change: when index changes in sequence,
+	% set as current sequence
+	if percept(sequenceIndex(Index)) then insert (sequence(Index)). %seqIndex
+		
+	% Record the initial state of movement in belief base.
+	if percept(state(State)) then insert(state(State)).
+	
+	%  Adopt the goal sequence as a main goal of the agent.
+	if percept(sequence(Seq))
+		then adopt(sequence(Seq)).
+
+	% Adopt initial goals.
+	forall bel(room(Place)) do adopt(in(Place)).
+	
+	%  Initialise the sequence of blocks delivered.	
+	% Sets the sequence of blocks delivered in DropZone as an empty list
+	if true 
+		then insert(sequence([])). 
+}
