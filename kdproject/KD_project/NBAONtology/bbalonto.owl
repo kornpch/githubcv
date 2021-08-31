@@ -1,0 +1,500 @@
+@prefix : <http://www.ontologydesignpatterns.org/ekp/owl/BasketballLeague.owl#> .
+@prefix mq: <http://www.ontologydesignpatterns.org/schemas/dbpediainfoboxmatchingweight.owl#> .
+@prefix cpa: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#> .
+@prefix ekp: <http://www.ontologydesignpatterns.org/cp/ekp#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix base: <http://www.ontologydesignpatterns.org/ekp/owl/BasketballLeague.owl> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@base <http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl> .
+
+<http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl> rdf:type owl:Ontology ;
+                                                                    owl:imports <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl> ,
+                                                                                <http://www.ontologydesignpatterns.org/schemas/dbpediainfoboxmatchingweight.owl> ;
+                                                                    cpa:extractedFrom <http://dbpedia.org/> ,
+                                                                                      <http://en.wikipedia.org/> ;
+                                                                    cpa:hasAuthor "Aldo Gangemi" ,
+                                                                                  "Andrea Giovanni Nuzzolese" ,
+                                                                                  "Valentina Presutti" ;
+                                                                    rdfs:comment "An encyclopedic knowledge pattern (EKP) identifying the core knowledge that describes a BasketballLeague" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#hasAuthor
+cpa:hasAuthor rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://dbpedia.org/ontology/Activity
+<http://dbpedia.org/ontology/Activity> rdf:type owl:ObjectProperty ;
+                                       rdfs:label "Aktivität"@de ,
+                                                  "activity"@en ,
+                                                  "activité"@fr .
+
+
+###  http://dbpedia.org/ontology/Language
+<http://dbpedia.org/ontology/Language> rdf:type owl:ObjectProperty .
+
+
+###  http://dbpedia.org/ontology/Organisation
+<http://dbpedia.org/ontology/Organisation> rdf:type owl:ObjectProperty ;
+                                           rdfs:label "Organisation"@de ,
+                                                      "organisation"@en ,
+                                                      "organisation"@fr ,
+                                                      "organização"@pt .
+
+
+###  http://dbpedia.org/ontology/Person
+<http://dbpedia.org/ontology/Person> rdf:type owl:ObjectProperty ;
+                                     rdfs:label "Person"@de ,
+                                                "person"@en ,
+                                                "personne"@fr ,
+                                                "pessoa"@pt .
+
+
+###  http://dbpedia.org/ontology/Place
+<http://dbpedia.org/ontology/Place> rdf:type owl:ObjectProperty ;
+                                    rdfs:label "lieu"@fr ,
+                                               "lugar"@pt ,
+                                               "place"@en ,
+                                               "περιοχή"@el .
+
+
+###  http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl#linksToAdministrativeRegion
+:linksToAdministrativeRegion rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf <http://dbpedia.org/ontology/Place> ;
+                             rdfs:domain <http://dbpedia.org/ontology/BasketballLeague> ;
+                             rdfs:range <http://dbpedia.org/ontology/AdministrativeRegion> ;
+                             rdfs:comment "Relation between Basketball League and Administrative Region"@en ,
+                                          "Relazione tra Basketball League e Administrative Region"@it ;
+                             rdfs:label "links to Administrative Region"@en .
+
+
+###  http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl#linksToBasketballLeague
+:linksToBasketballLeague rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf <http://dbpedia.org/ontology/Organisation> ;
+                         rdfs:domain <http://dbpedia.org/ontology/BasketballLeague> ;
+                         rdfs:range <http://dbpedia.org/ontology/BasketballLeague> .
+
+
+###  http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl#linksToBasketballPlayer
+:linksToBasketballPlayer rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf <http://dbpedia.org/ontology/Person> ;
+                         rdfs:domain <http://dbpedia.org/ontology/BasketballLeague> ;
+                         rdfs:range <http://dbpedia.org/ontology/BasketballPlayer> ;
+                         rdfs:comment "Relation between Basketball League and Basketball Player"@en ,
+                                      "Relazione tra Basketball League e Basketball Player"@it ;
+                         rdfs:label "links to Basketball Player"@en .
+
+
+###  http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl#linksToBasketballTeam
+:linksToBasketballTeam rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf <http://dbpedia.org/ontology/Organisation> ;
+                       rdfs:domain <http://dbpedia.org/ontology/BasketballLeague> ;
+                       rdfs:range <http://dbpedia.org/ontology/BasketballTeam> .
+
+
+###  http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl#linksToBroadcast
+:linksToBroadcast rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf <http://dbpedia.org/ontology/Organisation> ;
+                  rdfs:domain <http://dbpedia.org/ontology/BasketballLeague> ;
+                  rdfs:range <http://dbpedia.org/ontology/Broadcast> .
+
+
+###  http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl#linksToCity
+:linksToCity rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf <http://dbpedia.org/ontology/Place> ;
+             rdfs:domain <http://dbpedia.org/ontology/BasketballLeague> ,
+                         <http://dbpedia.org/ontology/BasketballTeam> ;
+             rdfs:range <http://dbpedia.org/ontology/City> ;
+             rdfs:comment "Relation between Basketball League and City"@en ,
+                          "Relazione tra Basketball League e City"@it ;
+             rdfs:label "links to City"@en .
+
+
+###  http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl#linksToContinent
+:linksToContinent rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf <http://dbpedia.org/ontology/Place> ;
+                  rdfs:domain <http://dbpedia.org/ontology/BasketballLeague> ;
+                  rdfs:range <http://dbpedia.org/ontology/Continent> ;
+                  rdfs:comment "Relation between Basketball League and Continent"@en ,
+                               "Relazione tra Basketball League e Continent"@it ;
+                  rdfs:label "links to Continent"@en .
+
+
+###  http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl#linksToCountry
+:linksToCountry rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf <http://dbpedia.org/ontology/Place> ;
+                rdfs:domain <http://dbpedia.org/ontology/BasketballLeague> ;
+                rdfs:range <http://dbpedia.org/ontology/Country> ;
+                rdfs:comment "Relation between Basketball League and Country"@en ,
+                             "Relazione tra Basketball League e Country"@it ;
+                rdfs:label "links to Country"@en .
+
+
+###  http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl#linksToLanguage
+:linksToLanguage rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf <http://dbpedia.org/ontology/Language> ;
+                 rdfs:domain <http://dbpedia.org/ontology/BasketballLeague> ;
+                 rdfs:range <http://dbpedia.org/ontology/Language> ;
+                 rdfs:comment "Relation between Basketball League and Language"@en ,
+                              "Relazione tra Basketball League e Language"@it ;
+                 rdfs:label "links to Language"@en .
+
+
+###  http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl#linksToSport
+:linksToSport rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf <http://dbpedia.org/ontology/Activity> ;
+              rdfs:domain <http://dbpedia.org/ontology/BasketballLeague> ;
+              rdfs:range <http://dbpedia.org/ontology/Sport> ;
+              rdfs:comment "Relation between Basketball League and Sport"@en ,
+                           "Relazione tra Basketball League e Sport"@it ;
+              rdfs:label "links to Sport"@en .
+
+
+###  http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl#linksToStadium
+:linksToStadium rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf <http://dbpedia.org/ontology/Place> ;
+                rdfs:domain <http://dbpedia.org/ontology/BasketballLeague> ;
+                rdfs:range <http://dbpedia.org/ontology/Stadium> ;
+                rdfs:comment "Relation between Basketball League and Stadium"@en ,
+                             "Relazione tra Basketball League e Stadium"@it ;
+                rdfs:label "links to Stadium"@en .
+
+
+###  http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl#linksToUniversity
+:linksToUniversity rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf <http://dbpedia.org/ontology/Organisation> ;
+                   rdfs:domain <http://dbpedia.org/ontology/BasketballLeague> ;
+                   rdfs:range <http://dbpedia.org/ontology/University> ;
+                   rdfs:comment "Relation between Basketball League and University"@en ,
+                                "Relazione tra Basketball League e University"@it ;
+                   rdfs:label "links to University"@en .
+
+
+###  http://www.w3.org/2004/02/skos/core#relatedMatch
+skos:relatedMatch rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://dbpedia.org/ontology/AdministrativeRegion
+<http://dbpedia.org/ontology/AdministrativeRegion> rdf:type owl:Class ;
+                                                   rdfs:label "administrative region"@en ,
+                                                              "région administrative"@fr .
+
+
+###  http://dbpedia.org/ontology/BasketballLeague
+<http://dbpedia.org/ontology/BasketballLeague> rdf:type owl:Class ;
+                                               rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :linksToBasketballLeague ;
+                                                                 owl:someValuesFrom <http://dbpedia.org/ontology/BasketballLeague>
+                                                               ] ,
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :linksToBasketballTeam ;
+                                                                 owl:someValuesFrom <http://dbpedia.org/ontology/BasketballTeam>
+                                                               ] ,
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :linksToCity ;
+                                                                 owl:someValuesFrom <http://dbpedia.org/ontology/City>
+                                                               ] ,
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :linksToContinent ;
+                                                                 owl:someValuesFrom <http://dbpedia.org/ontology/Continent>
+                                                               ] ,
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :linksToCountry ;
+                                                                 owl:someValuesFrom <http://dbpedia.org/ontology/Country>
+                                                               ] ,
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :linksToSport ;
+                                                                 owl:someValuesFrom <http://dbpedia.org/ontology/Sport>
+                                                               ] ;
+                                               rdfs:comment "a group of sports teams that compete against each other in Basketball" ;
+                                               rdfs:label "basketball league"@en ,
+                                                          "ligue de basketball"@fr .
+
+
+###  http://dbpedia.org/ontology/BasketballPlayer
+<http://dbpedia.org/ontology/BasketballPlayer> rdf:type owl:Class ;
+                                               rdfs:label "basketball player"@en ,
+                                                          "joueur de basketball"@fr .
+
+
+###  http://dbpedia.org/ontology/BasketballTeam
+<http://dbpedia.org/ontology/BasketballTeam> rdf:type owl:Class ;
+                                             rdfs:label "basketball team"@en .
+
+
+###  http://dbpedia.org/ontology/Broadcast
+<http://dbpedia.org/ontology/Broadcast> rdf:type owl:Class ;
+                                        rdfs:label "broadcast"@en ,
+                                                   "Émission de télévision"@fr .
+
+
+###  http://dbpedia.org/ontology/City
+<http://dbpedia.org/ontology/City> rdf:type owl:Class ;
+                                   rdfs:comment "a relatively large and permanent settlement, particularly a large urban settlement" ;
+                                   rdfs:label "city"@en ,
+                                              "cité"@fr .
+
+
+###  http://dbpedia.org/ontology/Continent
+<http://dbpedia.org/ontology/Continent> rdf:type owl:Class ;
+                                        rdfs:label "continent"@en ,
+                                                   "continent"@fr ,
+                                                   "ήπειρος"@el .
+
+
+###  http://dbpedia.org/ontology/Country
+<http://dbpedia.org/ontology/Country> rdf:type owl:Class ;
+                                      rdfs:label "Staat"@de ,
+                                                 "country"@en ,
+                                                 "pays"@fr ,
+                                                 "χώρα"@el .
+
+
+###  http://dbpedia.org/ontology/Language
+<http://dbpedia.org/ontology/Language> rdf:type owl:Class .
+
+
+###  http://dbpedia.org/ontology/Sport
+<http://dbpedia.org/ontology/Sport> rdf:type owl:Class ;
+                                    rdfs:comment "A sport is commonly defined as an organized, competitive, and skillful physical activity." ;
+                                    rdfs:label "sport"@en ,
+                                               "sport"@fr .
+
+
+###  http://dbpedia.org/ontology/Stadium
+<http://dbpedia.org/ontology/Stadium> rdf:type owl:Class ;
+                                      rdfs:label "stade"@fr ,
+                                                 "stadium"@en .
+
+
+###  http://dbpedia.org/ontology/University
+<http://dbpedia.org/ontology/University> rdf:type owl:Class ;
+                                         rdfs:label "university"@en ,
+                                                    "université"@fr ,
+                                                    "πανεπιστήμιο"@el .
+
+
+###  http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl#american_basketball_league
+:american_basketball_league rdf:type owl:Class ;
+                            rdfs:subClassOf <http://dbpedia.org/ontology/BasketballLeague> .
+
+
+###  http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl#chinese_basketball_league
+:chinese_basketball_league rdf:type owl:Class ;
+                           rdfs:subClassOf <http://dbpedia.org/ontology/BasketballLeague> .
+
+
+###  http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl#european_basketball_league
+:european_basketball_league rdf:type owl:Class ;
+                            rdfs:subClassOf <http://dbpedia.org/ontology/BasketballLeague> .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://dbpedia.org/property/champion
+<http://dbpedia.org/property/champion> rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/property/mostChamps
+<http://dbpedia.org/property/mostChamps> rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/property/relatedComps
+<http://dbpedia.org/property/relatedComps> rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/property/text
+<http://dbpedia.org/property/text> rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/property/tv
+<http://dbpedia.org/property/tv> rdf:type owl:NamedIndividual .
+
+
+###  http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl#adminstrative_region
+:adminstrative_region rdf:type owl:NamedIndividual ,
+                               <http://dbpedia.org/ontology/AdministrativeRegion> .
+
+
+###  http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl#africa
+:africa rdf:type owl:NamedIndividual ,
+                 <http://dbpedia.org/ontology/Continent> .
+
+
+###  http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl#americas
+:americas rdf:type owl:NamedIndividual ,
+                   <http://dbpedia.org/ontology/Continent> .
+
+
+###  http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl#antartica
+:antartica rdf:type owl:NamedIndividual ,
+                    <http://dbpedia.org/ontology/Continent> .
+
+
+###  http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl#asia
+:asia rdf:type owl:NamedIndividual ,
+               <http://dbpedia.org/ontology/Continent> .
+
+
+###  http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl#basketball_league
+:basketball_league rdf:type owl:NamedIndividual ,
+                            <http://dbpedia.org/ontology/BasketballLeague> .
+
+
+###  http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl#canada
+:canada rdf:type owl:NamedIndividual ,
+                 <http://dbpedia.org/ontology/Country> .
+
+
+###  http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl#china
+:china rdf:type owl:NamedIndividual ,
+                <http://dbpedia.org/ontology/Country> .
+
+
+###  http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl#lining_tigers
+:lining_tigers rdf:type owl:NamedIndividual ,
+                        <http://dbpedia.org/ontology/BasketballTeam> .
+
+
+###  http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl#linksToBasketballLeague
+:linksToBasketballLeague rdf:type owl:NamedIndividual ;
+                         skos:relatedMatch <http://dbpedia.org/property/relatedComps> .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :linksToBasketballLeague ;
+   owl:annotatedProperty skos:relatedMatch ;
+   owl:annotatedTarget <http://dbpedia.org/property/relatedComps> ;
+   mq:dbpediaInfoboxMatchingWeight 100.0
+ ] .
+
+
+###  http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl#linksToBasketballTeam
+:linksToBasketballTeam rdf:type owl:NamedIndividual ;
+                       skos:relatedMatch <http://dbpedia.org/property/champion> ,
+                                         <http://dbpedia.org/property/mostChamps> ,
+                                         <http://dbpedia.org/property/text> .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :linksToBasketballTeam ;
+   owl:annotatedProperty skos:relatedMatch ;
+   owl:annotatedTarget <http://dbpedia.org/property/text> ;
+   mq:dbpediaInfoboxMatchingWeight 40.0
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :linksToBasketballTeam ;
+   owl:annotatedProperty skos:relatedMatch ;
+   owl:annotatedTarget <http://dbpedia.org/property/champion> ;
+   mq:dbpediaInfoboxMatchingWeight 30.0
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :linksToBasketballTeam ;
+   owl:annotatedProperty skos:relatedMatch ;
+   owl:annotatedTarget <http://dbpedia.org/property/mostChamps> ;
+   mq:dbpediaInfoboxMatchingWeight 30.0
+ ] .
+
+
+###  http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl#linksToBroadcast
+:linksToBroadcast rdf:type owl:NamedIndividual ;
+                  skos:relatedMatch <http://dbpedia.org/property/tv> .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :linksToBroadcast ;
+   owl:annotatedProperty skos:relatedMatch ;
+   owl:annotatedTarget <http://dbpedia.org/property/tv> ;
+   mq:dbpediaInfoboxMatchingWeight 100.0
+ ] .
+
+
+###  http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl#luka_doncic
+:luka_doncic rdf:type owl:NamedIndividual ,
+                      <http://dbpedia.org/ontology/BasketballPlayer> .
+
+
+###  http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl#metaworld_peace
+:metaworld_peace rdf:type owl:NamedIndividual ,
+                          <http://dbpedia.org/ontology/BasketballPlayer> .
+
+
+###  http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl#mexico
+:mexico rdf:type owl:NamedIndividual ,
+                 <http://dbpedia.org/ontology/Country> .
+
+
+###  http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl#montreal
+:montreal rdf:type owl:NamedIndividual ,
+                   <http://dbpedia.org/ontology/City> .
+
+
+###  http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl#ontario
+:ontario rdf:type owl:NamedIndividual ,
+                  <http://dbpedia.org/ontology/City> .
+
+
+###  http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl#tacko_fall
+:tacko_fall rdf:type owl:NamedIndividual ,
+                     <http://dbpedia.org/ontology/BasketballPlayer> .
+
+
+###  http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl#tennese
+:tennese rdf:type owl:NamedIndividual ,
+                  <http://dbpedia.org/ontology/City> .
+
+
+###  http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl#tony_parker
+:tony_parker rdf:type owl:NamedIndividual ,
+                      <http://dbpedia.org/ontology/BasketballPlayer> .
+
+
+###  http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl#usa
+:usa rdf:type owl:NamedIndividual ,
+              <http://dbpedia.org/ontology/Country> .
+
+
+###  http://ontologydesignpatterns.org/aemoo/ekp/BasketballLeague.owl#vancouver
+:vancouver rdf:type owl:NamedIndividual ,
+                    <http://dbpedia.org/ontology/City> .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+<http://dbpedia.org/ontology/Language> rdfs:label "langage"@fr ,
+                                                  "language"@en .
+
+
+:linksToBasketballLeague rdfs:comment "Relazione tra Basketball League e Basketball League"@it ,
+                                      "Relation between Basketball League and Basketball League"@en ;
+                         rdfs:label "links to Basketball League"@en .
+
+
+:linksToBasketballTeam rdfs:comment "Relazione tra Basketball League e Basketball Team"@it ;
+                       rdfs:label "links to Basketball Team"@en ;
+                       rdfs:comment "Relation between Basketball League and Basketball Team"@en .
+
+
+:linksToBroadcast rdfs:comment "Relation between Basketball League and Broadcast"@en ;
+                  rdfs:label "links to Broadcast"@en ;
+                  rdfs:comment "Relazione tra Basketball League e Broadcast"@it .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

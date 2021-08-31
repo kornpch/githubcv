@@ -1,0 +1,236 @@
+@prefix : <http://www.example.org/vukcg450/assignment4#> .
+@prefix xe: <http://www.example.org/vukcg450/assignment4/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.example.org/vukcg450/assignment4> .
+
+<http://www.example.org/vukcg450/assignment4> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.example.org/vukcg450/assignment4#coach
+:coach rdf:type owl:ObjectProperty ;
+       rdfs:subPropertyOf :playsWith ;
+       rdf:type owl:InverseFunctionalProperty ,
+                owl:IrreflexiveProperty .
+
+
+###  http://www.example.org/vukcg450/assignment4#containsPlayers
+:containsPlayers rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/vukcg450/assignment4#containsTeams
+:containsTeams rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/vukcg450/assignment4#dissimilarTo
+:dissimilarTo rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.example.org/vukcg450/assignment4#playsWith
+:playsWith rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :playsWith ;
+           rdf:type owl:SymmetricProperty .
+
+
+###  http://www.example.org/vukcg450/assignment4#wonBy
+:wonBy rdf:type owl:ObjectProperty ,
+                owl:AsymmetricProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.example.org/vukcg450/assignment4#hasFullName
+:hasFullName rdf:type owl:DatatypeProperty .
+
+
+###  http://www.example.org/vukcg450/assignment4#hasRings
+:hasRings rdf:type owl:DatatypeProperty .
+
+
+###  http://www.example.org/vukcg450/assignment4#inYear
+:inYear rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.example.org/vukcg450/assignment4#Champions
+:Champions rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty :hasRings ;
+                                 owl:minCardinality "1"^^xsd:nonNegativeInteger
+                               ] ;
+           rdfs:subClassOf :NBA .
+
+
+###  http://www.example.org/vukcg450/assignment4#Coaches
+:Coaches rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty :coach ;
+                               owl:someValuesFrom :NBA
+                             ] ;
+         rdfs:subClassOf :SportsTeam .
+
+
+###  http://www.example.org/vukcg450/assignment4#HallOfFamers
+:HallOfFamers rdf:type owl:Class ;
+              rdfs:subClassOf :NBA .
+
+
+###  http://www.example.org/vukcg450/assignment4#HoustonRockets
+:HoustonRockets rdf:type owl:Class ;
+                rdfs:subClassOf :NBA .
+
+
+###  http://www.example.org/vukcg450/assignment4#NBA
+:NBA rdf:type owl:Class ;
+     rdfs:subClassOf :SportsTeam .
+
+
+###  http://www.example.org/vukcg450/assignment4#NBAChampionships
+:NBAChampionships rdf:type owl:Class ;
+                  owl:equivalentClass [ rdf:type owl:Restriction ;
+                                        owl:onProperty :wonBy ;
+                                        owl:allValuesFrom :Champions
+                                      ] .
+
+
+###  http://www.example.org/vukcg450/assignment4#RetiredPlayers
+:RetiredPlayers rdf:type owl:Class ;
+                rdfs:subClassOf :NBA .
+
+
+###  http://www.example.org/vukcg450/assignment4#SportsTeam
+:SportsTeam rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.example.org/vukcg450/assignment4#BasketballTeam
+:BasketballTeam rdf:type owl:NamedIndividual ,
+                         :SportsTeam ;
+                :dissimilarTo :TrackTeam ;
+                :hasFullName "NationalBasketballTeam" .
+
+
+###  http://www.example.org/vukcg450/assignment4#DwayneWade
+:DwayneWade rdf:type owl:NamedIndividual ;
+            :hasRings 3 .
+
+
+###  http://www.example.org/vukcg450/assignment4#Finals_1997
+:Finals_1997 rdf:type owl:NamedIndividual ,
+                      :NBAChampionships ;
+             :wonBy :MichealJordan .
+
+
+###  http://www.example.org/vukcg450/assignment4#Finals_2006
+:Finals_2006 rdf:type owl:NamedIndividual ,
+                      :NBAChampionships ;
+             :wonBy :DwayneWade ;
+             :inYear 2006 .
+
+
+###  http://www.example.org/vukcg450/assignment4#Finals_2016
+:Finals_2016 rdf:type owl:NamedIndividual ;
+             :wonBy :LebronJames ;
+             :inYear 2016 .
+
+
+###  http://www.example.org/vukcg450/assignment4#GregoryPopovich
+:GregoryPopovich rdf:type owl:NamedIndividual ,
+                          :Coaches ;
+                 :coach :TimDuncan ;
+                 :hasRings 5 .
+
+
+###  http://www.example.org/vukcg450/assignment4#JamesHarden
+:JamesHarden rdf:type owl:NamedIndividual ,
+                      :HoustonRockets ;
+             :playsWith :RobertCovington ;
+             :hasFullName "James_Harden" .
+
+
+###  http://www.example.org/vukcg450/assignment4#KobeBryant
+:KobeBryant rdf:type owl:NamedIndividual ,
+                     :HallOfFamers .
+
+
+###  http://www.example.org/vukcg450/assignment4#LebronJames
+:LebronJames rdf:type owl:NamedIndividual ,
+                      :Champions ;
+             :playsWith :DwayneWade ;
+             :hasRings 3 .
+
+
+###  http://www.example.org/vukcg450/assignment4#MarkDantoni
+:MarkDantoni rdf:type owl:NamedIndividual ;
+             :coach :JamesHarden ;
+             :hasFullName "Mark_Dantoni" .
+
+
+###  http://www.example.org/vukcg450/assignment4#MichealJordan
+:MichealJordan rdf:type owl:NamedIndividual ,
+                        :HallOfFamers ;
+               :playsWith :ScottiePippen .
+
+
+###  http://www.example.org/vukcg450/assignment4#RobertCovington
+:RobertCovington rdf:type owl:NamedIndividual ;
+                 :playsWith :JamesHarden ;
+                 :hasFullName "Robert_Covington" .
+
+
+###  http://www.example.org/vukcg450/assignment4#ScottiePippen
+:ScottiePippen rdf:type owl:NamedIndividual ,
+                        :HallOfFamers ;
+               :wonBy :MichealJordan .
+
+
+###  http://www.example.org/vukcg450/assignment4#Shaq_ONeal
+:Shaq_ONeal rdf:type owl:NamedIndividual ,
+                     :RetiredPlayers .
+
+
+###  http://www.example.org/vukcg450/assignment4#Shawn_Kempy
+:Shawn_Kempy rdf:type owl:NamedIndividual ,
+                      :RetiredPlayers .
+
+
+###  http://www.example.org/vukcg450/assignment4#TimDuncan
+:TimDuncan rdf:type owl:NamedIndividual ;
+           :playsWith :TonyParker ;
+           :hasRings 5 .
+
+
+###  http://www.example.org/vukcg450/assignment4#Tim_Hardaway
+:Tim_Hardaway rdf:type owl:NamedIndividual ,
+                       :RetiredPlayers .
+
+
+###  http://www.example.org/vukcg450/assignment4#TonyParker
+:TonyParker rdf:type owl:NamedIndividual ,
+                     :NBA ;
+            :playsWith :TimDuncan ;
+            :hasFullName "Tony_Parker" .
+
+
+###  http://www.example.org/vukcg450/assignment4#TrackTeam
+:TrackTeam rdf:type owl:NamedIndividual ;
+           :dissimilarTo :BasketballTeam ;
+           :hasFullName "NationalTrackandFieldTeam" .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
